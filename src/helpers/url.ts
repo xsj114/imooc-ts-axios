@@ -1,17 +1,5 @@
-import { isDate, isPlainObject } from './util'
-
-function encode(val: string): string {
-  return encodeURIComponent(val)
-    .replace(/%40/g, '@')
-    .replace(/%3A/gi, ':')
-    .replace(/%24/g, '$')
-    .replace(/%2C/gi, ',')
-    .replace(/%20/g, '+')
-    .replace(/%5B/gi, '[')
-    .replace(/%5D/gi, ']')
-}
-
 /*
+ * 需求
  * {
       url: /base/get,
       params: {
@@ -68,6 +56,19 @@ function encode(val: string): string {
  *
  * 丢弃url中的哈希标记
  * */
+import { isDate, isPlainObject } from './util'
+
+function encode(val: string): string {
+  return encodeURIComponent(val)
+    .replace(/%40/g, '@')
+    .replace(/%3A/gi, ':')
+    .replace(/%24/g, '$')
+    .replace(/%2C/gi, ',')
+    .replace(/%20/g, '+')
+    .replace(/%5B/gi, '[')
+    .replace(/%5D/gi, ']')
+}
+
 export function buildURL(url: string, params?: any): string {
   if (!params) {
     return url
